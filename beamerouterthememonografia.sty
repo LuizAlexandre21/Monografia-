@@ -1,0 +1,46 @@
+ %beamerouterthememonografia.sty
+\mode<presentation>
+
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+  \fill[color=UFCBlue4] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+  \fill[color=UFCGold1] (0,0) rectangle (3.18,1.9);
+  \node[inner sep=0] at (1.475,1.3) {\includegraphics[width=.08\textwidth]{logo-ufc.PNG}};
+  \fill[color=UFCGold1] (3.3,0) rectangle(\the\paperwidth,1.9);
+  \ifnum\thepage>1\relax%
+   \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+   \fi
+  \end{tikzpicture}
+}
+
+
+% Title page
+\defbeamertemplate*{title page}{monografia}[1][]
+                   {
+    \vskip2cm                 
+    \begin{beamercolorbox}[wd=12cm,leftskip=1cm,sep=8pt,#1]{title page header}
+      \centering
+      \usebeamerfont{title}\inserttitle\par%
+    \end{beamercolorbox}%
+    \vskip 0.5cm
+    \begin{beamercolorbox}[wd=10cm,leftskip1cm,sep=8pt,#1]{subtitle}
+      \centering
+      \usebeamerfont{author}\insertsubtitle\par%
+    \end{beamercolorbox}
+    \vskip2cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,#1]{author} 
+      \usebeamerfont{author}\insertauthor%
+    \end{beamercolorbox}
+    \vskip0.1cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,#1]{author}
+      \usebeamerfont{author}\insertdate%
+    \end{beamercolorbox}
+    \vskip0.1cm%
+    \begin{beamercolorbox}[wd=17cm,leftskip=0cm,#1]{institute}
+       \usebeamerfont{author}\insertinstitute%
+    \end{beamercolorbox}
+    \vskip0.1cm%
+                   }
+\mode
+<all>

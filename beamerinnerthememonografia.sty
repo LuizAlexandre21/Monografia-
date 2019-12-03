@@ -1,0 +1,80 @@
+%beamerinnerthememonografia.sty
+\mode<presentation>
+\setbeamercolor{progress bar progress}{use=progress bar,bg=progress bar.fg}
+\defbeamertemplate{footline}{progress bar}{
+  \dimen0=\paperwidth
+  \multiply\dimen0 by \insertsectionnumber
+  \divide\dimen0 by \inserttotalsectionnumber
+  \edef\progressbarwidth{\the\dimen0}
+  \leavevmode%
+}
+
+% Frame title
+\defbeamertemplate*{frametitle}{monografia}[1][]
+{
+\vskip1cm%
+  \begin{beamercolorbox}[wd=\paperwidth]{frametitle} 
+  \begin{tikzpicture}
+  \useasboundingbox(0,-1) rectangle(\the\paperwidth,0.5);
+  \fill[UFCBlue4] (2,0) rectangle(\the\paperwidth,2);
+  \fill[UFCGold1] (0,0) rectangle (2,2);
+  \fill[UFCGold1] (0,-7.65) rectangle (6.5,-9);
+  \fill[UFCBlue4] (6.5,-7.65) rectangle (\the\paperwidth,-9);
+  \node at (1,0.75) {\includegraphics[width=.08\textwidth]{logo-ufc.PNG}};
+   \ifx\insertframetitle\@empty%
+       {\node[anchor=west, white,font=\large] at (3.2,0.41){\insertframetitle};}
+      \else%
+      {\node[anchor= west, white,font=\LARGE] at (4.2,0.81){\insertframetitle};}
+      {\node[white, font=\footnotesize] at (2.25,-7.85){\insertauthor};
+        \node[white, font=\footnotesize] at (7.75,-7.85){\insertdate};}
+      \fi
+  \end{tikzpicture}
+  \end{beamercolorbox}
+}
+
+\newcommand{\monografia@disablesectionpage}{
+  \AtBeginSection{
+    % intentionally empty
+  }
+}
+\newcommand{\monografia@enablesectionpage}{
+  \AtBeginSection{
+    \ifbeamer@inframe
+      \sectionpage
+    \else
+      \frame[plain,c,noframenumbering]{\sectionpage}
+    \fi
+  }
+}
+
+\AtBeginSection[]{
+  
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}{title}
+    \begin{tikzpicture}
+      \useasboundingbox (0,-300) rectangle(\the\paperwidth,\the\paperheight);
+      \fill[color=UFCBlue4] (-2,-5) rectangle (\the\paperwidth,\the\paperheight);
+      \node[color=white] at (5,5) {\usebeamerfont{title}\insertsectionhead\par};
+  \end{tikzpicture}
+  \end{beamercolorbox}
+  \end{frame}
+}
+
+
+
+\setbeamercolor{progress bar progress}{use=progress bar,bg=progress bar.fg}
+\defbeamertemplate{footline}{progress bar}{
+  \dimen0=\paperwidth
+  \multiply\dimen0 by \insertframenumber
+  \divide\dimen0 by \inserttotalframenumber
+  \edef\progressbarwidth{\the\dimen0}
+
+  \leavevmode%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.75ex,dp=1ex]{progress bar}
+    \begin{beamercolorbox}[wd=\progressbarwidth,ht=1.75ex,dp=1ex]{progress bar progress}
+    \end{beamercolorbox}%
+  \end{beamercolorbox}%
+}
+
